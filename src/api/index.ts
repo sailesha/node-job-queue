@@ -7,7 +7,7 @@ app.get('/', async (c) => {
   return c.text('Hello World')
 })
 
-app.get('/add', async (c) => {
+app.post('/add', async (c) => {
   const data = c.req.query('data')!
   const jobId = c.req.query('id')!
   console.log(`Scheduling job ${jobId} with data:`, data)
