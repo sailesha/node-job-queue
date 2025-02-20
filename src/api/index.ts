@@ -6,7 +6,7 @@ app.get('/', async (c) => {
   return c.text('Hello World')
 })
 
-app.get('/health', async (c) => {
+app.get('/healthz', async (c) => {
   return c.body('OK', 200)
 })
 
