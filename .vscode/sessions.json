@@ -1,0 +1,59 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v10/terminal-keeper.json",
+  "theme": "tribe",
+  "active": "default",
+  "activateOnStartup": true,
+  "keepExistingTerminals": false,
+  "sessions": {
+    "default": [
+      {
+        "name": "node-job-queue",
+        "autoExecuteCommands": false,
+        "icon": "person",
+        "color": "terminal.ansiGreen",
+        "commands": [
+          "echo hello"
+        ]
+      },
+      [
+        {
+          "name": "api",
+          "icon": "cloud",
+          "env": {
+            "REDIS_URL": "redis://localhost:6379"
+          },
+          "commands": [
+            "npm run dev:api"
+          ]
+        },
+        {
+          "name": "worker",
+          "icon": "tasklist",
+          "env": {
+            "REDIS_URL": "redis://localhost:6379"
+          },
+          "commands": [
+            "npm run dev:worker"
+          ]
+        }
+      ],
+      [
+        {
+          "name": "run",
+          "icon": "terminal",
+          "commands": [
+            ""
+          ]
+        }
+      ]
+    ],
+    "saved-session": [
+      {
+        "name": "connect",
+        "commands": [
+          ""
+        ]
+      }
+    ]
+  }
+}

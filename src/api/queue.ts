@@ -8,4 +8,29 @@ if (!REDIS_URL) {
 console.log("Connecting to Redis at", REDIS_URL)
 const connection: ConnectionOptions = { url: REDIS_URL }
 
-export const jobQueue = new Queue("job-queue", { connection })
+export const jobQueue = new Queue(
+  "job-queue",
+  {
+    connection,
+    defaultJobOptions: {
+      attempts: 3,
+      backoff: {
+        type: "exponential",
+        delay: 1000,
+      },
+    }
+  }
+)
+
+// Queue to process telemetry data. Concurrency is limited to 1 to prevent
+// multiple telemetry jobs from running at the same time. Also, telemetry
+// jobs are not retried since failures can be retried in subsequent jobs.
+export const telemetryQueue = new Queue(
+  "telemetry-queue",
+  {
+    connection,
+    defaultJobOptions: {
+      attempts: 1,
+    }
+  }
+)

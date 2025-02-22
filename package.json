@@ -9,7 +9,10 @@
     "start:api": "node dist/api/server.js",
     "dev:worker": "tsx watch src/worker/index.ts",
     "build:worker": "tsc",
-    "start:worker": "node dist/worker/index.js"
+    "start:worker": "node dist/worker/index.js",
+    "dev:job-dashboard": "tsx watch src/job-dashboard/server.ts",
+    "build:job-dashboard": "tsc",
+    "start:job-dashboard": "node dist/job-dashboard/server.js"
   },
   "keywords": [],
   "author": "",
@@ -17,11 +20,14 @@
   "description": "",
   "dependencies": {
     "@hono/node-server": "^1.13.8",
+    "bull-arena": "^4.4.2",
     "bullmq": "^5.41.3",
+    "express": "^4.21.2",
     "hono": "^4.7.2",
     "tsx": "^4.19.3"
   },
   "devDependencies": {
+    "@types/bull-arena": "^3.0.10",
     "@types/node": "^22.13.4",
     "typescript": "^5.7.3"
   }
